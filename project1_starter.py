@@ -1,7 +1,7 @@
 """
 COMP 163 - Project 1: Character Creator & Saving/Loading
-Name: [Your Name Here]
-Date: [Date]
+Name: Samuel Somerville
+Date: 10/24/2025
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
@@ -18,6 +18,10 @@ def create_character(name, character_class):
     """
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
+
+    stats = calculate_stats(character_class, 1)
+    char_dict = {"name": name, "class": character_class, "level": 1, "strength": str(stats[0]), "magic": str(stats[1]), "health": str(stats[2]), "gold": 100}
+    
     pass
 
 def calculate_stats(character_class, level):
@@ -33,6 +37,20 @@ def calculate_stats(character_class, level):
     """
     # TODO: Implement this function
     # Return a tuple: (strength, magic, health)
+
+    low_level_multipler = level * 0.8
+    med_level_multipler = level * 1.5
+    high_level_multipler = level * 2.2
+    
+    if character_class == "Warrior":
+        return (8 + high_level_multipler, 2 + low_level_multipler, 20 + high_level_multipler * 1.2)
+    elif character_class == "Mage":
+        return (3 + low_level_multipler, 9 + high_level_multipler, 15 + med_level_multipler * 1.2)
+    elif character_class = "Rogue":
+        return (6 + med_level_multipler, 6 + med_level_multipler, 12 + low_level_multipler * 1.2)
+    elif character_class = "Clerics":
+        return (5 + med_level_multipler, 8 + high_level_multipler, 20 + high_level_multipler * 1.2)
+    
     pass
 
 def save_character(character, filename):
