@@ -25,8 +25,8 @@ def create_character(name, character_class):
         global lvl
         lvl = 1
         stats = calculate_stats(character_class, lvl)
-        char_dict = {"name": name, "class": character_class, "level": lvl, "strength": int(stats[0]), "magic": int(stats[1]),
-                     "health": int(stats[2]), "gold": 100}
+        char_dict = {"name": name, "class": character_class, "level": inr(lvl), "strength": float(stats[0]), "magic": float(stats[1]),
+                     "health": float(stats[2]), "gold": int(100)}
         return char_dict
     else:
         return None
@@ -100,10 +100,10 @@ def load_character(filename):
     if os.path.isfile(filename):
         with open(filename, "r") as fileload:
             lines = fileload.readlines()
-            char_dict = {"name": lines[0].split(":")[1].strip(), "class": lines[1].split(":")[1].strip(),
-                         "level": lines[2].split(":")[1].strip(), "strength": lines[3].split(":")[1].strip(),
-                         "magic": lines[4].split(":")[1].strip(), "health": lines[5].split(":")[1].strip(),
-                         "gold": lines[6].split(":")[1].strip()}
+            char_dict = {"name": float(lines[0].split(":")[1].strip()), "class": float(lines[1].split(":")[1].strip()),
+                         "level": int(lines[2].split(":")[1].strip()), "strength": float(lines[3].split(":")[1].strip()),
+                         "magic": float(lines[4].split(":")[1].strip()), "health": float(lines[5].split(":")[1].strip()),
+                         "gold": int(lines[6].split(":")[1].strip())}
             return char_dict
     else:
         return None
@@ -146,9 +146,9 @@ def level_up(character):
     global lvl
     lvl += 1
     stats = calculate_stats(character["class"], lvl)
-    character["strength"] = int(stats[0])
-    character["magic"] = int(stats[1])
-    character["health"] = int(stats[2])
+    character["strength"] = float(stats[0])
+    character["magic"] = float(stats[1])
+    character["health"] = float(stats[2])
     return None
 
 
