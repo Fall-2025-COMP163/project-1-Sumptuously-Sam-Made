@@ -89,7 +89,7 @@ def save_character(character, filename):
             file.write(f"Gold: {character["gold"]}")
             return True
     else:
-            return True
+            return False
 
 
 def load_character(filename):
