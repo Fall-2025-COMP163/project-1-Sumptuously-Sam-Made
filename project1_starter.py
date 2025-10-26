@@ -53,7 +53,7 @@ def calculate_stats(character_class, level):
         return 3 + low_level_multiple, 9 + high_level_multiple, 15 + med_level_multiple * 1.2
     elif character_class == "Rogue":
         return 6 + med_level_multiple, 6 + med_level_multiple, 12 + low_level_multiple * 1.2
-    elif character_class == "Clerics":
+    elif character_class == "Cleric":
         return 5 + med_level_multiple, 8 + high_level_multiple, 20 + high_level_multiple * 1.2
     return None
 
