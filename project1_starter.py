@@ -7,11 +7,12 @@ AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
 
+lvl = 1
 def create_character(name, character_class):
     """
     Creates a new character dictionary with calculated stats
     Returns: dictionary with keys: name, class, level, strength, magic, health, gold
-    
+
     Example:
     char = create_character("Aria", "Mage")
     # Should return: {"name": "Aria", "class": "Mage", "level": 1, "strength": 5, "magic": 15, "health": 80, "gold": 100}
@@ -19,45 +20,48 @@ def create_character(name, character_class):
     # TODO: Implement this function
     # Remember to use calculate_stats() function for stat calculation
 
-    stats = calculate_stats(character_class, 1)
-    char_dict = {"name": name, "class": character_class, "level": 1, "strength": str(stats[0]), "magic": str(stats[1]), "health": str(stats[2]), "gold": 100}
-    
-    pass
+    global lvl
+    lvl = 1
+    stats = calculate_stats(character_class, lvl)
+    char_dict = {"name": name, "class": character_class, "level": lvl, "strength": str(stats[0]), "magic": str(stats[1]),
+                 "health": str(stats[2]), "gold": 100}
+    return char_dict
+
 
 def calculate_stats(character_class, level):
     """
     Calculates base stats based on class and level
     Returns: tuple of (strength, magic, health)
-    
+
     Design your own formulas! Ideas:
     - Warriors: High strength, low magic, high health
-    - Mages: Low strength, high magic, medium health  
+    - Mages: Low strength, high magic, medium health
     - Rogues: Medium strength, medium magic, low health
     - Clerics: Medium strength, high magic, high health
     """
     # TODO: Implement this function
     # Return a tuple: (strength, magic, health)
 
-    low_level_multipler = level * 0.8
-    med_level_multipler = level * 1.5
-    high_level_multipler = level * 2.2
-    
+    low_level_multiple = level * 0.8
+    med_level_multiple = level * 1.5
+    high_level_multiple = level * 2.2
+
     if character_class == "Warrior":
-        return (8 + high_level_multipler, 2 + low_level_multipler, 20 + high_level_multipler * 1.2)
+        return 8 + high_level_multiple, 2 + low_level_multiple, 20 + high_level_multiple * 1.2
     elif character_class == "Mage":
-        return (3 + low_level_multipler, 9 + high_level_multipler, 15 + med_level_multipler * 1.2)
-    elif character_class = "Rogue":
-        return (6 + med_level_multipler, 6 + med_level_multipler, 12 + low_level_multipler * 1.2)
-    elif character_class = "Clerics":
-        return (5 + med_level_multipler, 8 + high_level_multipler, 20 + high_level_multipler * 1.2)
-    
-    pass
+        return 3 + low_level_multiple, 9 + high_level_multiple, 15 + med_level_multiple * 1.2
+    elif character_class == "Rogue":
+        return 6 + med_level_multiple, 6 + med_level_multiple, 12 + low_level_multiple * 1.2
+    elif character_class == "Clerics":
+        return 5 + med_level_multiple, 8 + high_level_multiple, 20 + high_level_multiple * 1.2
+    return None
+
 
 def save_character(character, filename):
     """
     Saves character to text file in specific format
     Returns: True if successful, False if error occurred
-    
+
     Required file format:
     Character Name: [name]
     Class: [class]
@@ -69,7 +73,17 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-    pass
+
+    with open(filename, "w") as file:
+        file.write(f"Character Name: {character["name"]}\n")
+        file.write(f"Class: {character["class"]}\n")
+        file.write(f"Level: {character["level"]}\n")
+        file.write(f"Strength: {character["strength"]}\n")
+        file.write(f"Magic: {character["magic"]}\n")
+        file.write(f"Health: {character["health"]}\n")
+        file.write(f"Gold: {character["gold"]}")
+    return True
+
 
 def load_character(filename):
     """
@@ -78,13 +92,20 @@ def load_character(filename):
     """
     # TODO: Implement this function
     # Remember to handle file not found errors
-    pass
+    with open(filename, "r") as fileload:
+        lines = fileload.readlines()
+        char_dict = {"name": lines[0].split(":")[1].strip(), "class": lines[1].split(":")[1].strip(),
+                     "level": lines[2].split(":")[1].strip(), "strength": lines[3].split(":")[1].strip(),
+                     "magic": lines[4].split(":")[1].strip(), "health": lines[5].split(":")[1].strip(),
+                     "gold": lines[6].split(":")[1].strip()}
+    return char_dict
+
 
 def display_character(character):
     """
     Prints formatted character sheet
     Returns: None (prints to console)
-    
+
     Example output:
     === CHARACTER SHEET ===
     Name: Aria
@@ -96,7 +117,15 @@ def display_character(character):
     Gold: 100
     """
     # TODO: Implement this function
+    print(f"Name: {character["name"]}")
+    print(f"Class: {character["class"]}")
+    print(f"Level: {character["level"]}")
+    print(f"Strength: {character["strength"]}")
+    print(f"Magic: {character["magic"]}")
+    print(f"Health: {character["health"]}")
+    print(f"Gold: {character["gold"]}")
     pass
+
 
 def level_up(character):
     """
@@ -106,15 +135,24 @@ def level_up(character):
     """
     # TODO: Implement this function
     # Remember to recalculate stats for the new level
+    global lvl
+    lvl += 1
+    stats = calculate_stats(character["class"], lvl)
+    character["strength"] = str(stats[0])
+    character["magic"] = str(stats[1])
+    character["health"] = str(stats[2])
     pass
+
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
     print("Test your functions here!")
-    
+
     # Example usage:
     # char = create_character("TestHero", "Warrior")
     # display_character(char)
     # save_character(char, "my_character.txt")
     # loaded = load_character("my_character.txt")
+    # print(loaded)
+    
