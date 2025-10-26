@@ -7,6 +7,7 @@ AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
 
+import os
 lvl = 1
 def create_character(name, character_class):
     """
@@ -92,13 +93,16 @@ def load_character(filename):
     """
     # TODO: Implement this function
     # Remember to handle file not found errors
-    with open(filename, "r") as fileload:
-        lines = fileload.readlines()
-        char_dict = {"name": lines[0].split(":")[1].strip(), "class": lines[1].split(":")[1].strip(),
-                     "level": lines[2].split(":")[1].strip(), "strength": lines[3].split(":")[1].strip(),
-                     "magic": lines[4].split(":")[1].strip(), "health": lines[5].split(":")[1].strip(),
-                     "gold": lines[6].split(":")[1].strip()}
-    return char_dict
+    if os.path.isfile(filename):
+        with open(filename, "r") as fileload:
+            lines = fileload.readlines()
+            char_dict = {"name": lines[0].split(":")[1].strip(), "class": lines[1].split(":")[1].strip(),
+                         "level": lines[2].split(":")[1].strip(), "strength": lines[3].split(":")[1].strip(),
+                         "magic": lines[4].split(":")[1].strip(), "health": lines[5].split(":")[1].strip(),
+                         "gold": lines[6].split(":")[1].strip()}
+            return char_dict
+    else:
+        return None
 
 
 def display_character(character):
@@ -124,7 +128,7 @@ def display_character(character):
     print(f"Magic: {character["magic"]}")
     print(f"Health: {character["health"]}")
     print(f"Gold: {character["gold"]}")
-    pass
+    return None
 
 
 def level_up(character):
@@ -141,7 +145,7 @@ def level_up(character):
     character["strength"] = int(stats[0])
     character["magic"] = int(stats[1])
     character["health"] = int(stats[2])
-    pass
+    return None
 
 
 # Main program area (optional - for testing your functions)
