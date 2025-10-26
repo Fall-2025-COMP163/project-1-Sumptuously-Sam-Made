@@ -25,7 +25,7 @@ def create_character(name, character_class):
         global lvl
         lvl = 1
         stats = calculate_stats(character_class, lvl)
-        char_dict = {"name": name, "class": character_class, "level": inr(lvl), "strength": float(stats[0]), "magic": float(stats[1]),
+        char_dict = {"name": name, "class": character_class, "level": int(lvl), "strength": float(stats[0]), "magic": float(stats[1]),
                      "health": float(stats[2]), "gold": int(100)}
         return char_dict
     else:
