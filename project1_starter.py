@@ -23,8 +23,8 @@ def create_character(name, character_class):
     global lvl
     lvl = 1
     stats = calculate_stats(character_class, lvl)
-    char_dict = {"name": name, "class": character_class, "level": lvl, "strength": str(stats[0]), "magic": str(stats[1]),
-                 "health": str(stats[2]), "gold": 100}
+    char_dict = {"name": name, "class": character_class, "level": lvl, "strength": int(stats[0]), "magic": int(stats[1]),
+                 "health": int(stats[2]), "gold": 100}
     return char_dict
 
 
@@ -138,9 +138,9 @@ def level_up(character):
     global lvl
     lvl += 1
     stats = calculate_stats(character["class"], lvl)
-    character["strength"] = str(stats[0])
-    character["magic"] = str(stats[1])
-    character["health"] = str(stats[2])
+    character["strength"] = int(stats[0])
+    character["magic"] = int(stats[1])
+    character["health"] = int(stats[2])
     pass
 
 
