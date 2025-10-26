@@ -79,15 +79,18 @@ def save_character(character, filename):
     # TODO: Implement this function
     # Remember to handle file errors gracefully
 
-    with open(filename, "w") as file:
-        file.write(f"Character Name: {character["name"]}\n")
-        file.write(f"Class: {character["class"]}\n")
-        file.write(f"Level: {character["level"]}\n")
-        file.write(f"Strength: {character["strength"]}\n")
-        file.write(f"Magic: {character["magic"]}\n")
-        file.write(f"Health: {character["health"]}\n")
-        file.write(f"Gold: {character["gold"]}")
-    return True
+    if os.path.isfile(filename):
+        with open(filename, "w") as file:
+            file.write(f"Character Name: {character["name"]}\n")
+            file.write(f"Class: {character["class"]}\n")
+            file.write(f"Level: {character["level"]}\n")
+            file.write(f"Strength: {character["strength"]}\n")
+            file.write(f"Magic: {character["magic"]}\n")
+            file.write(f"Health: {character["health"]}\n")
+            file.write(f"Gold: {character["gold"]}")
+        return True
+    else:
+        return False
 
 
 def load_character(filename):
@@ -146,6 +149,7 @@ def level_up(character):
     global lvl
     lvl += 1
     stats = calculate_stats(character["class"], lvl)
+    character["level"] = int(lvl)
     character["strength"] = float(stats[0])
     character["magic"] = float(stats[1])
     character["health"] = float(stats[2])
