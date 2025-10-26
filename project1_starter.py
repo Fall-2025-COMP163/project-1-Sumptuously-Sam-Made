@@ -88,23 +88,8 @@ def save_character(character, filename):
             file.write(f"Magic: {character["magic"]}\n")
             file.write(f"Health: {character["health"]}\n")
             file.write(f"Gold: {character["gold"]}")
-            return True
+            return "f"
     else:
-        if "/" in filename:
-            os.path.join(filename.split("/"))
-            if os.path.exists(filename):
-                with open(filename, "w") as file:
-                    file.write(f"Character Name: {character["name"]}\n")
-                    file.write(f"Class: {character["class"]}\n")
-                    file.write(f"Level: {character["level"]}\n")
-                    file.write(f"Strength: {character["strength"]}\n")
-                    file.write(f"Magic: {character["magic"]}\n")
-                    file.write(f"Health: {character["health"]}\n")
-                    file.write(f"Gold: {character["gold"]}")
-                    return True
-            else:
-                return False
-        else:
             return False
 
 
