@@ -87,9 +87,9 @@ def save_character(character, filename):
             file.write(f"Magic: {character["magic"]}\n")
             file.write(f"Health: {character["health"]}\n")
             file.write(f"Gold: {character["gold"]}")
-            return True
+            return os.path.exists(filename)
     else:
-            return False
+            return os.path.exists(filename)
 
 
 def load_character(filename):
