@@ -100,7 +100,7 @@ def load_character(filename):
     if os.path.isfile(filename):
         with open(filename, "r") as fileload:
             lines = fileload.readlines()
-            char_dict = {"name": float(lines[0].split(":")[1].strip()), "class": float(lines[1].split(":")[1].strip()),
+            char_dict = {"name": (lines[0].split(":")[1].strip()), "class": (lines[1].split(":")[1].strip()),
                          "level": int(lines[2].split(":")[1].strip()), "strength": float(lines[3].split(":")[1].strip()),
                          "magic": float(lines[4].split(":")[1].strip()), "health": float(lines[5].split(":")[1].strip()),
                          "gold": int(lines[6].split(":")[1].strip())}
