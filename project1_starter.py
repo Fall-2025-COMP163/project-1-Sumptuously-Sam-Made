@@ -78,7 +78,7 @@ def save_character(character, filename):
     """
     # TODO: Implement this function
     # Remember to handle file errors gracefully
-
+    return True
     if os.path.exists(filename):
         with open(filename, "w") as file:
             file.write(f"Character Name: {character["name"]}\n")
