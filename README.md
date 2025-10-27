@@ -99,9 +99,9 @@ Implementation (70%): Function correctness, file operations, error handling
 Interview (30%): Code explanation and live coding challenge
 
 
-## 📝 ReadME Documentation 
+# 📝 ReadME Documentation 
 
-# Game Concept
+## Game Concept
 My RPG world is about giving a player the choice to choose their own path and equipping them with the proper stats and resources to begin an amazing adventure. If I was to put more time into the game I would add more choices that lead to rewards, battles, and glory.
 
 # Design Choices
