@@ -104,16 +104,16 @@ Interview (30%): Code explanation and live coding challenge
 ## Game Concept
 My RPG world is about giving a player the choice to choose their own path and equipping them with the proper stats and resources to begin an amazing adventure. If I was to put more time into the game I would add more choices that lead to rewards, battles, and glory.
 
-# Design Choices
+## Design Choices
 I choose my stats formulas based on a games like Elden Ring that give you less improvement from level to level so that the game can be more playable rather than a run through.
 
-# Bonus Creative Features
+## Bonus Creative Features
 As a bonus feature I added key/value pairs that give the player a "Weapon" and "Accessory" based on their character_class.
 
-# AI Usage
+## AI Usage
 AI helped add newlines to code wirtten into a file
 AI helped me understand the output of readlines()
 AI helped determine the use cases of "global"
 
-# How to Run
+## How to Run
 To test my code you must remove the hashtags from the comments at the end of the code and replace the function calls with other values and/or call other functions.
