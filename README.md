@@ -102,7 +102,7 @@ Interview (30%): Code explanation and live coding challenge
 # 📝 ReadME Documentation 
 
 ## Game Concept
-My RPG world is about giving a player the choice to choose their own path and equipping them with the proper stats and resources to begin an amazing adventure. If I was to put more time into the game I would add more choices that lead to rewards, battles, and glory.
+My RPG world is about giving a player the choice to choose their own path and equipping them with the proper stats and resources to begin an amazing adventure. If I was to put more time into this game I would add more choices that lead to rewards, battles, and glory.
 
 ## Design Choices
 I choose my stats formulas based on a games like Elden Ring that give you less improvement from level to level so that the game can be more playable rather than a run through.
@@ -111,8 +111,8 @@ I choose my stats formulas based on a games like Elden Ring that give you less i
 As a bonus feature I added key/value pairs that give the player a "Weapon" and "Accessory" based on their character_class.
 
 ## AI Usage
-AI helped add newlines to code wirtten into a file
-AI helped me understand the output of readlines()
+AI helped add newlines to code wirtten into a file  
+AI helped me understand the output of readlines()  
 AI helped determine the use cases of "global"
 
 ## How to Run
