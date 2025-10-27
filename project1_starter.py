@@ -5,6 +5,9 @@ Date: 10/24/2025
 
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
+AI helped add newlines to code wirtten into a file
+AI helped me understand the output of readlines()
+AI helped determine the use cases of "global"
 """
 
 import os
@@ -60,6 +63,27 @@ def calculate_stats(character_class, level):
         return 5 + med_level_multiple, 8 + high_level_multiple, 20 + high_level_multiple * 1.2
     else:
         return None
+
+def equipment_assignment(character, character_class):
+    """
+    Adds a key/value pair to the previous character dictionary that includes a weapon and accessory based of the character_class
+    
+    Example: equipment_assigment(char_dict, "Warrior")
+    char_dict + ["Weapon":"Battle Axe", "Accessory":"Viking Helmet"]
+    """
+    if character_class == "Warrior":
+        character["Weapon"] =  "Battle Axe"
+        character["Accessory"] = "Viking Helmet"
+    elif character_class == "Mage":
+        character["Weapon"] = "Staff"
+        character["Accessory"] = "Cloak"
+    elif character_class == "Rogue":
+        character["Weapon"] = "Thief's Knife"
+        character["Accessory"] = "Pocket Purse"
+    elif character_class == "Cleric":
+        character["Weapon"] = "Potions"
+        character["Accessory"] = "Alchemic Book"
+    return None
 
 
 def save_character(character, filename):
@@ -165,4 +189,3 @@ if __name__ == "__main__":
     # save_character(char, "my_character.txt")
     # loaded = load_character("my_character.txt")
     # print(loaded)
-    
